@@ -96,7 +96,7 @@ class Iterable:
 class Field:
     
     def __init__(self, value):
-        self._value = None
+        self.__value = None
         self.value = value
 
     @property
@@ -105,7 +105,7 @@ class Field:
 
     @value.setter
     def value(self, value):
-        self._value = value
+        self.__value = value
 
 
 class Name(Field):
@@ -117,23 +117,14 @@ class Phone(Field):
     def value(self, value):
         if value < 100:
             raise ValueError
-        self._value = value
+        self.__value = value
 
 
-class Birthday:
-
-    def __init__(self, object_date) -> None:
-        self.__object_date = None
-        self.object_date = object_date
-
-    @property
-    def object_date(self): 
-        return self.__object_date
-
-    @object_date.setter
-    def object_date(self, object_date):
-        if isinstance(object_date, date):
-            self.__object_date = object_date
+class Birthday(Field):
+    @Field.value.setter
+    def value(self, value):
+        if isinstance(value, date):
+            self.__value = valie
 
 
 class Record:
