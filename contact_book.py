@@ -124,7 +124,7 @@ class Birthday(Field):
     @Field.value.setter
     def value(self, value):
         if isinstance(value, date):
-            self.__value = valie
+            self.__value = value
 
 
 class Record:
